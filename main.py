@@ -90,7 +90,7 @@ while True:
 verb_three = verb_three.upper()
 noun_six = noun_six.upper()
 noun_one = noun_one.upper()
-person_name.upper()
+person_name = person_name.upper()
 noun_two = noun_two.upper()
 noun_three = noun_three.upper()
 noun_four = noun_four.upper()
