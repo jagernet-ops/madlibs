@@ -117,6 +117,6 @@ while True:
     reset = input("Reset?(y/n): ")
     if reset == 'y':
         os.system('clear')
-        os.system(f"python3 {directory}/madlibs.py")
+        os.system(f"python3 {directory}/main.py")
     elif reset == 'n':
         sys.exit()
