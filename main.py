@@ -1,122 +1,51 @@
-import time 
-import os
-import sys
-import re
+from time import sleep
+from os import system, path
+from sys import exit
+from re import findall
 
-directory = (os.path.dirname(os.path.realpath(__file__)))
+directory = (path.dirname(path.realpath(__file__)))
 f = open(f"{directory}/madlibsbanner.txt")
 file_contents = f.read()
 print(file_contents)
 f.close()
+sleep(2)
 
-time.sleep(2)
-print()
+divider = '##################################################\n'
+questions = ["Name an adjective: ", "Name another adjective: ",
+             "Name a noun: ", "Name another noun: ",
+             "Name a verb: ", "Name another verb: ",
+             "Write down a person's name: ", "Name another noun: ",
+             "Name a liquid: ", "Name a verb ending in -ing: ",
+             "Name a part of the body: ", "Name a plural noun: ",
+             "Name a verb ending in -ing: ", "Name another noun: "
+             ]
 
-while True:
-    adjective_one = input("Name an adjective: ")
-    if adjective_one != "":
-        break
+responses = []
 
-while True:
-    adjective_two = input("Name another adjective: ")
-    if adjective_two != "":
-        break
-
-while True:
-    verb_one = input("Name a verb: ")
-    if verb_one != "":
-        break
-
-while True:
-    verb_two = input("Name yet another verb: ")
-    if verb_two != "":
-        break
-
-while True:
-    noun_one = input("Name a noun: ")
-    if noun_one != "":
-        break
-
-while True:
-    noun_two = input("Name another noun: ")
-    if noun_two != "":
-        break
-
-while True:
-    noun_three = input("Name another noun: ")
-    if noun_three != "":
-        break
-
-while True:
-    noun_four = input("Name another noun: ")
-    if noun_four != "":
-        break
-
-while True:
-    person_name = input("Write down a person's name: ")
-    if person_name != "":
-        break
-
-while True:
-    liquid_one = input("Name a liquid: ")
-    if liquid_one != "":
-        break
-
-while True:
-    verb_three = input("Name a verb ending in -ing: ")
-    if verb_three != "":
-        break
-
-while True:
-    part_of_the_body = input("Name a part of the body: ")
-    if part_of_the_body != "":
-        break
-
-while True:
-    noun_five = input("Name a plural noun: ")
-    if noun_five != "":
-        break
-
-while True:
-    verb_four = input("Name a verb ending in -ing: ")
-    if verb_four != "":
-        break
-
-while True:
-    noun_six = input("Name another noun: ")
-    if noun_six != "":
-        break
-
-verb_three = verb_three.upper()
-noun_six = noun_six.upper()
-noun_one = noun_one.upper()
-person_name = person_name.upper()
-noun_two = noun_two.upper()
-noun_three = noun_three.upper()
-noun_four = noun_four.upper()
-verb_one = verb_one.upper()
-verb_two = verb_two.upper()
-adjective_one = adjective_one.upper()
-adjective_two = adjective_two.upper()
-liquid_one = liquid_one.upper()
-divider = '##################################################'
+for q in questions:
+    response = input(q)
+    responses.append(response)
 
 print(divider)
-print()
-madlib = (f"It was a {adjective_one}, cold November day. I woke up to the {adjective_two} smell of {noun_one} roasting in the {noun_two} downstairs. I {verb_one} down the stairs to see if I could help {verb_two} the {noun_one}. My mom said, 'See if {person_name} needs a fresh {noun_four}.' So I carried a tray of glasses full of {liquid_one} into the {verb_three} room. When I got there, I couldn't believe my {part_of_the_body}! There were {noun_five} {verb_four} on the {noun_six}")
-n = 50
-print('\n'.join(re.findall('.{1,%i}' % n, madlib)))
-print()
-print(divider)
-print()
 
-time.sleep(5)
+madlib = (f"It was a {responses[0]}, cold November day. I woke up to the "
+          f"{responses[1]} smell of {responses[2]} roasting in the {responses[3]} "
+          f"downstairs. I {responses[4]} down the stairs to see if I could help "
+          f"{responses[5]} the {responses[2]}. My mom said, 'See if {responses[6]} "
+          f"needs a fresh {responses[7]}.' So I carried a tray of glasses full of "
+          f"{responses[8]} into the {responses[9]} room. When I got there, I "
+          f"couldn't believe my {responses[10]}! There were {responses[11]} "
+          f"{responses[12]} on the {responses[13]} ")
+
+print('\n'.join(findall('.{1,%i}' % 50, madlib)) + "\n")
+print(divider)
+sleep(5)
 reset = ""
 
 while True:
     reset = input("Reset?(y/n): ")
-    if reset == 'y':
-        os.system('clear')
-        os.system(f"python3 {directory}/main.py")
-    elif reset == 'n':
-        sys.exit()
+    if reset.upper() == 'Y':
+        system('clear')
+        system(f"python3 {directory}/main.py")
+    elif reset.upper() == 'N':
+        exit()
